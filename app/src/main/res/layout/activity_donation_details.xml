@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DonationDetails">
+
+    <TextView
+        android:id="@+id/foodItemLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="70dp"
+        android:fontFamily="@font/bubblegum_sans"
+        android:text="Food Item"
+        android:textColor="#8BC34A"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/goToMaps"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="201dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/button"
+        android:fontFamily="@font/bubblegum_sans"
+        android:onClick="onGoToMaps"
+        android:text="Get Address"
+        android:textColor="#FBF9F9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/donorContactLabel" />
+
+    <TextView
+        android:id="@+id/foodItemField"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="90dp"
+        android:layout_marginTop="70dp"
+        android:fontFamily="@font/bubblegum_sans"
+        android:text="foodItem"
+        android:textColor="#03A9F4"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/foodItemLabel"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/shelfLifeLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/bubblegum_sans"
+        android:text="Shelf Life"
+        android:textColor="#8BC34A"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/foodItemLabel" />
+
+    <TextView
+        android:id="@+id/shelfLifeField"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/bubblegum_sans"
+        android:text="shelfLife"
+        android:textColor="#03A9F4"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@+id/shelfLifeLabel"
+        app:layout_constraintTop_toBottomOf="@+id/foodItemField" />
+
+    <TextView
+        android:id="@+id/noOfPersonsLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/bubblegum_sans"
+        android:text="No of Persons"
+        android:textColor="#8BC34A"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/shelfLifeLabel" />
+
+    <TextView
+        android:id="@+id/noOfPersonsField"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/bubblegum_sans"
+        android:text="noofpersons"
+        android:textColor="#03A9F4"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@+id/noOfPersonsLabel"
+        app:layout_constraintTop_toBottomOf="@+id/shelfLifeField" />
+
+    <TextView
+        android:id="@+id/donorNameLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/bubblegum_sans"
+        android:text="Donor Name"
+        android:textColor="#8BC34A"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/noOfPersonsLabel" />
+
+    <TextView
+        android:id="@+id/donorNameField"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/bubblegum_sans"
+        android:text="donorname"
+        android:textColor="#03A9F4"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@+id/donorNameLabel"
+        app:layout_constraintTop_toBottomOf="@+id/noOfPersonsField" />
+
+    <TextView
+        android:id="@+id/timeLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/bubblegum_sans"
+        android:text="Time"
+        android:textColor="#8BC34A"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/donorNameLabel" />
+
+    <TextView
+        android:id="@+id/timeField"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/bubblegum_sans"
+        android:text="00:00:00"
+        android:textColor="#03A9F4"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@+id/timeLabel"
+        app:layout_constraintTop_toBottomOf="@+id/donorNameField" />
+
+    <TextView
+        android:id="@+id/donorContactLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/bubblegum_sans"
+        android:text="Donor Contact"
+        android:textColor="#8BC34A"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timeLabel" />
+
+    <TextView
+        android:id="@+id/donorContactField"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/bubblegum_sans"
+        android:text="0000000000"
+        android:textColor="#03A9F4"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@+id/donorContactLabel"
+        app:layout_constraintTop_toBottomOf="@+id/timeField" />
+
+    <Button
+        android:id="@+id/acceptBtn"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="79dp"
+        android:layout_marginEnd="51dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="48dp"
+        android:background="@drawable/submit_btn"
+        android:fontFamily="@font/bubblegum_sans"
+        android:onClick="sendNotification"
+        android:text="Accept Request"
+        android:textColor="#F4F4F4"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/goToMaps" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

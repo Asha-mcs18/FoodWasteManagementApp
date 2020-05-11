@@ -1,0 +1,106 @@
+{
+  "project_info": {
+    "project_number": "527337565041",
+    "firebase_url": "https://fooddonation-4fe98.firebaseio.com",
+    "project_id": "fooddonation-4fe98",
+    "storage_bucket": "fooddonation-4fe98.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:527337565041:android:95b281b82353b0785424d0",
+        "android_client_info": {
+          "package_name": "com.example.fooddonationapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "527337565041-prp8gg95i9moa7b8vpn6tve26nbg9ue5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.fooddonationapp",
+            "certificate_hash": "07452e87f9cf5af3b96291accd3d7062bce2b8a6"
+          }
+        },
+        {
+          "client_id": "527337565041-9u9kr4dsqs56dhrh1o2po8uf3n8q84sa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-wifpGUFY5LQyNsvfyiVg6hq4PU2nGVc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "527337565041-9u9kr4dsqs56dhrh1o2po8uf3n8q84sa.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:527337565041:android:45cfdea3a41791cd5424d0",
+        "android_client_info": {
+          "package_name": "com.example.foodwasteapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "527337565041-9u9kr4dsqs56dhrh1o2po8uf3n8q84sa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-wifpGUFY5LQyNsvfyiVg6hq4PU2nGVc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "527337565041-9u9kr4dsqs56dhrh1o2po8uf3n8q84sa.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:527337565041:android:c4e71f982b2c5c765424d0",
+        "android_client_info": {
+          "package_name": "com.example.googlemapsdonor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "527337565041-9u9kr4dsqs56dhrh1o2po8uf3n8q84sa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-wifpGUFY5LQyNsvfyiVg6hq4PU2nGVc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "527337565041-9u9kr4dsqs56dhrh1o2po8uf3n8q84sa.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

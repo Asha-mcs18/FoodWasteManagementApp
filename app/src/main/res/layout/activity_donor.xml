@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DonorActivity">
+
+
+    <Button
+        android:id="@+id/curr_loc"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/button"
+        android:fontFamily="@font/bubblegum_sans"
+        android:onClick="toMapActivity"
+        android:text="Use Current Location"
+        android:textColor="#EFEEEE"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintTop_toBottomOf="@+id/search_loc" />
+
+    <Button
+        android:id="@+id/search_loc"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="160dp"
+        android:background="@drawable/button"
+        android:fontFamily="@font/bubblegum_sans"
+        android:onClick="toSearchAddress"
+        android:text="Search Address"
+        android:textColor="#FBF9F9"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/submitRequest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:background="@drawable/submit_btn"
+        android:fontFamily="@font/bubblegum_sans"
+        android:onClick="onSubmit"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:text="Submit Request"
+        android:textColor="#F8F6F6"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/FoodItemField"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="60dp"
+        android:ems="10"
+        android:hint="Enter Food Item"
+        android:inputType="textPersonName"
+        android:textColor="#03A9F4"
+        android:textColorHint="#8003A9F4"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/shelfLifeField"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="100dp"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/FoodItemField" />
+
+    <EditText
+        android:id="@+id/NoOfPersonsField"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="100dp"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/shelfLifeField" />
+
+    <TextView
+        android:id="@+id/foodlabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="46dp"
+        android:layout_marginStart="41dp"
+        android:layout_marginTop="70dp"
+        android:fontFamily="@font/bubblegum_sans"
+        android:text="Food Item"
+        android:textColor="#8BC34A"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@+id/FoodItemField"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/shelfLifeLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="83dp"
+        android:layout_marginStart="41dp"
+        android:layout_marginTop="70dp"
+        android:fontFamily="@font/bubblegum_sans"
+        android:text="Shelf Life"
+        android:textColor="#8BC34A"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@+id/shelfLifeField"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/foodlabel" />
+
+    <TextView
+        android:id="@+id/PersonsLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="44dp"
+        android:layout_marginStart="41dp"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/bubblegum_sans"
+        android:text="No of Persons"
+        android:textColor="#8BC34A"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@+id/NoOfPersonsField"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/shelfLifeLabel" />
+
+    <TextView
+        android:id="@+id/timeLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="120dp"
+        android:layout_marginStart="41dp"
+        android:layout_marginTop="140dp"
+        android:fontFamily="@font/bubblegum_sans"
+        android:text="Enter Time"
+        android:textColor="#8BC34A"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/search_loc"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/PersonsLabel" />
+
+    <TimePicker
+        android:id="@+id/timePicker1"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+
+        android:layout_marginBottom="35dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginTop="40dp"
+        android:amPmBackgroundColor="#8BC34A"
+        android:amPmTextColor="#03A9F4"
+        android:numbersBackgroundColor="#8003A9F4"
+        android:numbersInnerTextColor="#FFFFFF"
+        android:numbersTextColor="#03A9F4"
+        android:timePickerMode="spinner"
+        app:layout_constraintBottom_toTopOf="@+id/search_loc"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/NoOfPersonsField" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="1dp"
+        android:layout_marginEnd="145dp"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="18dp"
+        android:background="#03A9F4"
+        android:fontFamily="casual"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="BHOJAN"
+        android:textAlignment="gravity"
+        android:textColor="#F3F5F6"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/FoodItemField"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+<!--    <TextView-->
+<!--        android:id="@+id/LocationLabel"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginBottom="5dp"-->
+<!--        android:fontFamily="@font/bubblegum_sans"-->
+<!--        android:text="EnterLocation"-->
+<!--        android:textColor="#8BC34A"-->
+<!--        android:textSize="24sp"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/search_loc"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/PersonsLabel" />-->
+
+
+<androidx.constraintlayout.widget.Guideline
+    android:id="@+id/guideline"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    app:layout_constraintGuide_begin="16dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>
