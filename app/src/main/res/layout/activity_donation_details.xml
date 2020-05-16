@@ -40,7 +40,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="90dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="72dp"
         android:fontFamily="@font/bubblegum_sans"
         android:text="foodItem"
         android:textColor="#03A9F4"
@@ -66,11 +66,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="92dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="52dp"
         android:fontFamily="@font/bubblegum_sans"
         android:text="shelfLife"
         android:textColor="#03A9F4"
-        android:textSize="24sp"
+        android:textSize="18sp"
         app:layout_constraintStart_toEndOf="@+id/shelfLifeLabel"
         app:layout_constraintTop_toBottomOf="@+id/foodItemField" />
 
@@ -91,12 +91,12 @@
         android:id="@+id/noOfPersonsField"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="48dp"
         android:fontFamily="@font/bubblegum_sans"
         android:text="noofpersons"
         android:textColor="#03A9F4"
-        android:textSize="24sp"
+        android:textSize="18sp"
         app:layout_constraintStart_toEndOf="@+id/noOfPersonsLabel"
         app:layout_constraintTop_toBottomOf="@+id/shelfLifeField" />
 
@@ -113,44 +113,44 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/noOfPersonsLabel" />
 
+    <!--    <TextView-->
+<!--        android:id="@+id/timeLabel"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="60dp"-->
+<!--        android:layout_marginTop="40dp"-->
+<!--        android:fontFamily="@font/bubblegum_sans"-->
+<!--        android:text="Time"-->
+<!--        android:textColor="#8BC34A"-->
+<!--        android:textSize="24sp"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/donorNameLabel" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/timeField"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="120dp"-->
+<!--        android:layout_marginTop="40dp"-->
+<!--        android:fontFamily="@font/bubblegum_sans"-->
+<!--        android:text="00:00:00"-->
+<!--        android:textColor="#03A9F4"-->
+<!--        android:textSize="24sp"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/timeLabel"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/donorNameField" />-->
+
     <TextView
         android:id="@+id/donorNameField"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="48dp"
         android:fontFamily="@font/bubblegum_sans"
         android:text="donorname"
         android:textColor="#03A9F4"
-        android:textSize="24sp"
+        android:textSize="18sp"
         app:layout_constraintStart_toEndOf="@+id/donorNameLabel"
         app:layout_constraintTop_toBottomOf="@+id/noOfPersonsField" />
-
-    <TextView
-        android:id="@+id/timeLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="40dp"
-        android:fontFamily="@font/bubblegum_sans"
-        android:text="Time"
-        android:textColor="#8BC34A"
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/donorNameLabel" />
-
-    <TextView
-        android:id="@+id/timeField"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="120dp"
-        android:layout_marginTop="40dp"
-        android:fontFamily="@font/bubblegum_sans"
-        android:text="00:00:00"
-        android:textColor="#03A9F4"
-        android:textSize="24sp"
-        app:layout_constraintStart_toEndOf="@+id/timeLabel"
-        app:layout_constraintTop_toBottomOf="@+id/donorNameField" />
 
     <TextView
         android:id="@+id/donorContactLabel"
@@ -163,20 +163,20 @@
         android:textColor="#8BC34A"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/timeLabel" />
+        app:layout_constraintTop_toBottomOf="@+id/donorNameLabel" />
 
     <TextView
         android:id="@+id/donorContactField"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="52dp"
         android:fontFamily="@font/bubblegum_sans"
         android:text="0000000000"
         android:textColor="#03A9F4"
-        android:textSize="24sp"
+        android:textSize="18sp"
         app:layout_constraintStart_toEndOf="@+id/donorContactLabel"
-        app:layout_constraintTop_toBottomOf="@+id/timeField" />
+        app:layout_constraintTop_toBottomOf="@+id/donorNameField" />
 
     <Button
         android:id="@+id/acceptBtn"

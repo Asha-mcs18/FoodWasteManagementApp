@@ -25,6 +25,7 @@ import java.util.List;
 public class NgoActivity<fragment1> extends AppCompatActivity {
     ArrayList <String> foodItemList = new ArrayList<>() ;
     HashMap<Integer ,String> donations=new HashMap<Integer,String>();
+//    HashMap<Integer ,String> locations=new HashMap<Integer,String>();
     private List<DonationListModel> mdonationList =null;
     private DonationListController donationListController = new DonationListController();
 
@@ -71,6 +72,7 @@ public class NgoActivity<fragment1> extends AppCompatActivity {
             String value = d.getFoodKey();
             String foodDetails =  "Food Item:  " +d.getFoodItem() + "    Persons: "+ d.getNoOfPersons();
             donations.put(k,value);
+//            locations.put(k,value);
 //            for (String s : donations){
 //                Log.d("My array list content: ", s);
 //            }

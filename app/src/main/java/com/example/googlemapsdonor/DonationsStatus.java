@@ -39,6 +39,7 @@ public class DonationsStatus extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_donations_status);
+//        sendNotification();
         Log.i("Donation Status","status");
         notificationManager = NotificationManagerCompat.from(this);
         DonationStatusController statusController = new DonationStatusController();
@@ -82,5 +83,6 @@ public class DonationsStatus extends AppCompatActivity {
                 .setCategory(NotificationCompat.CATEGORY_MESSAGE)
                 .build();
         notificationManager.notify(1, notification);
+
     }
 }
