@@ -17,6 +17,15 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.googlemapsdonor.firebasehandler.FBDonationHandler;
+import com.example.googlemapsdonor.firebasehandler.FBFoodHandler;
+import com.example.googlemapsdonor.firebasehandler.FBUserHandler;
+import com.example.googlemapsdonor.models.DataStatus;
+import com.example.googlemapsdonor.models.DonationListModel;
+import com.example.googlemapsdonor.models.DonationModel;
+import com.example.googlemapsdonor.models.FoodModel;
+import com.example.googlemapsdonor.models.UserModel;
+
 import static com.example.googlemapsdonor.utils.Notifications.CHANNEL_1_ID;
 
 public class DonationDetails extends AppCompatActivity {
@@ -35,12 +44,48 @@ public class DonationDetails extends AppCompatActivity {
     private static  final String CHANNEL_DESC= "Donation accepted notifocation";
     private NotificationManagerCompat notificationManager;
 
+    private FBDonationHandler fbDonationHandler = new FBDonationHandler();
+    private FBFoodHandler foodHandler = new FBFoodHandler();
+    private FBUserHandler fbUserHandler = new FBUserHandler();
+
+    private FoodModel food;
+    private UserModel donor;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_donation_details);
-        String donationKey =getIntent().getStringExtra("donationKey");
-        Log.i("DONATION KEY",donationKey);
+        final  DonationModel donation = (DonationListModel) getIntent().getSerializableExtra("DonationModel");
+        Log.i("DONATION KEY","DONATION KEY"+donation.getKey());
+        if(donation!=null&& donation.getFoodKey()!=null&&donation.getDonorKey()!=null){
+            foodHandler.getFoodItem(donation.getFoodKey(), new DataStatus() {
+                        @Override
+                        public void dataLoaded(Object fObject) {
+                            super.dataLoaded(fObject);
+                            food = (FoodModel) fObject;
+                            Log.d("Donation Details","inside food"+food.toString());
+                            fbUserHandler.readDonorByKey(donation.getDonorKey(), new DataStatus() {
+                                @Override
+                                public void dataLoaded(Object donorObject) {
+                                    super.dataLoaded(donorObject);
+                                    donor = (UserModel) donorObject;
+                                    Log.d("Donation Details","inside donor"+food.toString()+"   "+donor.toString());
+                                }
+
+                                @Override
+                                public void errorOccured(String message) {
+
+                                }
+                            });
+                        }
+
+                        @Override
+                        public void errorOccured(String message) {
+
+                        }
+                    });
+                }
+
         TextView food = (TextView) findViewById(R.id.foodItemField);
         food.setText(foodItem);
         TextView shelf = (TextView) findViewById(R.id.shelfLifeField);
@@ -79,9 +124,8 @@ public class DonationDetails extends AppCompatActivity {
         });
 
         notificationManager = NotificationManagerCompat.from(this);
-
-
     }
+
     public void sendNotification(View v) {
         String title = "Donation Accepted";
         String message = "You accepted the donation";
@@ -106,6 +150,5 @@ public class DonationDetails extends AppCompatActivity {
         startActivity(intent);
         setResult(Activity.RESULT_OK,intent);
         finish();
-
     }
 }

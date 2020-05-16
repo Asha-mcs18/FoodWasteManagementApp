@@ -109,6 +109,25 @@ public class FBDonationHandler {
         });
     }
 
+    //check
+    public void readDonationByKey(final String donationKey, final DataStatus dataStatus){
+        donationRef.child(donationKey).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot!=null){
+                    DonationModel donation = dataSnapshot.getValue(DonationModel.class);
+                    Log.d("Donation handler","inside donation"+donation.toString());
+                    dataStatus.dataLoaded(donation);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
     //done
     public void newDonation(final DonationModel donationModel, final DataStatus dataStatus){
         final String donorKey = donationModel.getDonorKey();

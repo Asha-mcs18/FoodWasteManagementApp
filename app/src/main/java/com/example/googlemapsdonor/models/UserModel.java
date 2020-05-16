@@ -75,4 +75,14 @@ public class UserModel {
         }
         return true;
     }
+
+    @Override
+    public String toString() {
+        return "UserModel{" +
+                "userKey='" + userKey + '\'' +
+                ", userName='" + userName + '\'' +
+                ", role='" + role + '\'' +
+                ", mobileNo='" + mobileNo + '\'' +
+                '}';
+    }
 }

@@ -140,8 +140,6 @@ public class FBUserHandler {
                                     activityDataStatus.errorOccured(databaseError.getMessage());
                                 }
                             });
-
-
                         }
                     }
 
@@ -182,6 +180,24 @@ public class FBUserHandler {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 String user =  dataSnapshot.getValue(String.class);
                 dataStatus.dataLoaded(user);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    public void readDonorByKey(String donorKey, final DataStatus dataStatus){
+        fullPath = userRef.child(Constants.DONOR);
+        fullPath.child(donorKey).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                UserModel donor = dataSnapshot.getValue(UserModel.class);
+                Log.d("User handler","donor is "+donor.toString());
+                dataStatus.dataLoaded(donor);
+
             }
 
             @Override

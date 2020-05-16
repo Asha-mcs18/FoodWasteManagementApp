@@ -88,7 +88,7 @@ public class NgoActivity<fragment1> extends AppCompatActivity {
 //                Log.d("CLICKED",donationList.toString());
                 String donationKey = donations.get(position);
 //                Log.i("Carry",""+position);
-                intent.putExtra("donationKey", donationKey);
+                intent.putExtra("DonationModel",mdonationList.get(position));
                 startActivity(intent);
                 setResult(Activity.RESULT_OK,intent);
                 finish();

@@ -86,7 +86,7 @@ public class FBFoodHandler {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot){
                 food = dataSnapshot.getValue(FoodModel.class);
                 // call back here only
-                 Log.d("get fFood Item","food item is "+food.getFoodKey());
+                 Log.d("get fFood Item","food item is "+food.toString());
                 dataStatus.dataLoaded(food);
             }
             @Override
