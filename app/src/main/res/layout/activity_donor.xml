@@ -2,8 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     tools:context=".DonorActivity">
 
 
@@ -138,21 +138,19 @@
         android:id="@+id/timeLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="120dp"
-        android:layout_marginStart="41dp"
-        android:layout_marginTop="140dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/bubblegum_sans"
         android:text="Enter Time"
         android:textColor="#8BC34A"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/search_loc"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/PersonsLabel" />
 
     <TimePicker
         android:id="@+id/timePicker1"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
+        android:layout_width="230dp"
+        android:layout_height="190dp"
 
         android:layout_marginBottom="35dp"
         android:layout_marginEnd="24dp"
