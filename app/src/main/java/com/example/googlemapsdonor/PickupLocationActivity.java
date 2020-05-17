@@ -2,6 +2,7 @@ package com.example.googlemapsdonor;
 
 import androidx.fragment.app.FragmentActivity;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.location.Address;
@@ -54,6 +55,7 @@ public class PickupLocationActivity extends FragmentActivity implements OnMapRea
         // Add a marker in Sydney and move the camera
         latitude = getIntent().getDoubleExtra("latitude",latitude);
         longitude = getIntent().getDoubleExtra("longitude",longitude);
+        Log.i("lat from pickup",""+latitude);
         String address = getAddress(this,latitude,longitude);
         TextView addressField = (TextView) findViewById(R.id.address);
         addressField.setText(address);
@@ -87,7 +89,8 @@ public class PickupLocationActivity extends FragmentActivity implements OnMapRea
 
     }
     public  void onReturn(View view){
-        Intent intent = new Intent(getApplicationContext(),NgoActivity.class);
+        Intent intent = new Intent(getApplicationContext(),DonationDetails.class);
         startActivity(intent);
+         finish();
     }
 }

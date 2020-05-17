@@ -1,7 +1,6 @@
 package com.example.googlemapsdonor;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -16,24 +15,23 @@ import android.widget.Toast;
 import com.example.googlemapsdonor.controllers.DonationListController;
 import com.example.googlemapsdonor.models.DataStatus;
 import com.example.googlemapsdonor.models.DonationListModel;
-import com.example.googlemapsdonor.models.DonationModel;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class NgoActivity<fragment1> extends AppCompatActivity {
-    ArrayList <String> foodItemList = new ArrayList<>() ;
+public class MyDonations extends AppCompatActivity {
+    ArrayList<String> foodItemList = new ArrayList<>() ;
     HashMap<Integer ,String> donations=new HashMap<Integer,String>();
-//    HashMap<Integer ,String> locations=new HashMap<Integer,String>();
+    //    HashMap<Integer ,String> locations=new HashMap<Integer,String>();
     private List<DonationListModel> mdonationList =null;
     private DonationListController donationListController = new DonationListController();
 
-//    @Override
+    //    @Override
     protected void onStart() {
         super.onStart();
         donationListController.getDonationList(new DataStatus() {
-//            @Override
+            //            @Override
 //            public void dataLoaded(List<Object> object) {
 //                super.dataLoaded(object);
 //                Log.d("Ngo Activity","Donation List Loaded successfully");
@@ -61,7 +59,7 @@ public class NgoActivity<fragment1> extends AppCompatActivity {
             @Override
             public void errorOccured(String message) {
                 Log.d("Ngo Activity","Donation List Loaded falied"+message);
-                Toast.makeText(NgoActivity.this,message,Toast.LENGTH_LONG).show();
+                Toast.makeText(MyDonations.this,message,Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -89,7 +87,7 @@ public class NgoActivity<fragment1> extends AppCompatActivity {
         donationList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(getApplicationContext(),DonationDetails.class);
+                Intent intent = new Intent(getApplicationContext(),Ngo_Otp.class);
 //                Log.d("CLICKED",donationList.toString());
                 String donationKey = donations.get(position);
 //                Log.i("Carry",""+position);
@@ -105,7 +103,7 @@ public class NgoActivity<fragment1> extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ngo);
+        setContentView(R.layout.activity_my_donations);
 
         Log.d("NGO ACTIVITY", "Donation List Items are : ");
         if(mdonationList!=null){
@@ -116,5 +114,7 @@ public class NgoActivity<fragment1> extends AppCompatActivity {
 
 
     }
+
 }
+
 

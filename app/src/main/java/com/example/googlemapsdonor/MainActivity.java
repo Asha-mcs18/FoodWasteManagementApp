@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
                         if(userRole!=null) {
                             Log.d("Donor role", "role is " + userRole);
                             if (userRole.equals(Constants.NGO)) {
-                                Intent intent = new Intent(getApplicationContext(), NgoActivity.class);
+                                Intent intent = new Intent(getApplicationContext(), Ngo_profile.class);
                                 startActivity(intent);
                             } else if (userRole.equals(Constants.DONOR)) {
                                 Intent intent = new Intent(getApplicationContext(), DonorProfile.class);

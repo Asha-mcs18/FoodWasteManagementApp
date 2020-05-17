@@ -30,20 +30,18 @@
         android:id="@+id/acceptBtn"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="79dp"
         android:layout_marginEnd="51dp"
         android:layout_marginStart="60dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/submit_btn"
         android:fontFamily="@font/bubblegum_sans"
         android:onClick="sendNotification"
         android:text="Accept Request"
         android:textColor="#F4F4F4"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/guideline11"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/guideline10" />
+        app:layout_constraintTop_toBottomOf="@+id/goToMaps" />
 
     <TextView
         android:id="@+id/foodItemLabel"
@@ -127,31 +125,31 @@
         app:layout_constraintStart_toEndOf="@+id/noOfPersonsLabel"
         app:layout_constraintTop_toBottomOf="@+id/shelfLifeField" />
 
-    <!--    <TextView-->
-    <!--        android:id="@+id/timeLabel"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_marginStart="60dp"-->
-    <!--        android:layout_marginTop="40dp"-->
-    <!--        android:fontFamily="@font/bubblegum_sans"-->
-    <!--        android:text="Time"-->
-    <!--        android:textColor="#8BC34A"-->
-    <!--        android:textSize="24sp"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toBottomOf="@+id/donorNameLabel" />-->
+        <TextView
+            android:id="@+id/timeLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="40dp"
+            android:fontFamily="@font/bubblegum_sans"
+            android:text="Time"
+            android:textColor="#8BC34A"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/noOfPersonsLabel" />
 
-    <!--    <TextView-->
-    <!--        android:id="@+id/timeField"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_marginStart="120dp"-->
-    <!--        android:layout_marginTop="40dp"-->
-    <!--        android:fontFamily="@font/bubblegum_sans"-->
-    <!--        android:text="00:00:00"-->
-    <!--        android:textColor="#03A9F4"-->
-    <!--        android:textSize="24sp"-->
-    <!--        app:layout_constraintStart_toEndOf="@+id/timeLabel"-->
-    <!--        app:layout_constraintTop_toBottomOf="@+id/donorNameField" />-->
+        <TextView
+            android:id="@+id/timeField"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="120dp"
+            android:layout_marginTop="40dp"
+            android:fontFamily="@font/bubblegum_sans"
+            android:text="00:00:00"
+            android:textColor="#03A9F4"
+            android:textSize="24sp"
+            app:layout_constraintStart_toEndOf="@+id/timeLabel"
+            app:layout_constraintTop_toBottomOf="@+id/noOfPersonsField" />
 
     <TextView
         android:id="@+id/donorNameLabel"
@@ -164,7 +162,7 @@
         android:textColor="#8BC34A"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/noOfPersonsLabel" />
+        app:layout_constraintTop_toBottomOf="@+id/timeLabel" />
 
     <TextView
         android:id="@+id/donorNameField"
@@ -177,7 +175,7 @@
         android:textColor="#03A9F4"
         android:textSize="18sp"
         app:layout_constraintStart_toEndOf="@+id/donorNameLabel"
-        app:layout_constraintTop_toBottomOf="@+id/noOfPersonsField" />
+        app:layout_constraintTop_toBottomOf="@+id/timeField" />
 
     <TextView
         android:id="@+id/donorContactLabel"

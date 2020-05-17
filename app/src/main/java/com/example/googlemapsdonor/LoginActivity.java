@@ -67,7 +67,7 @@ public class LoginActivity extends AppCompatActivity {
                         Intent intent = new Intent(getApplicationContext(), DonorProfile.class);
                         startActivity(intent);
                     } else if (user.getRole().equals(Constants.NGO)) {
-                        Intent intent = new Intent(getApplicationContext(), NgoActivity.class);
+                        Intent intent = new Intent(getApplicationContext(), Ngo_profile.class);
                         startActivity(intent);
                     }
                 }

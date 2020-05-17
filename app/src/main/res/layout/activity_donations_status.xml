@@ -4,21 +4,101 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    tools:context=".DonationsStatus"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".DonationsStatus">
 
     <TextView
         android:id="@+id/mstatus"
         android:layout_width="400dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="51dp"
         android:fontFamily="@font/bubblegum_sans"
+        android:textColor="#03A9F4"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/statusLabel" />
+
+    <TextView
+        android:id="@+id/statusLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="55dp"
+        android:fontFamily="@font/bubblegum_sans"
+        android:text="Donation Status"
         android:textColor="#8BC34A"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <!--    <androidx.constraintlayout.widget.Guideline-->
+<!--        android:id="@+id/guideline12"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="horizontal"-->
+<!--        app:layout_constraintGuide_begin="20dp"-->
+<!--        app:layout_constraintGuide_percent="0.0"/>-->
+<!--    <androidx.constraintlayout.widget.Guideline-->
+<!--        android:id="@+id/guideline13"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="horizontal"-->
+<!--        app:layout_constraintGuide_begin="20dp"-->
+<!--        app:layout_constraintGuide_percent="0.30"/>-->
+<!--    <androidx.constraintlayout.widget.Guideline-->
+<!--        android:id="@+id/guideline14"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="horizontal"-->
+<!--        app:layout_constraintGuide_begin="20dp"-->
+<!--        app:layout_constraintGuide_percent="0.6"/>-->
+
+<!--    <androidx.constraintlayout.widget.Guideline-->
+<!--        android:id="@+id/guideline16"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="horizontal"-->
+<!--        app:layout_constraintGuide_begin="20dp"-->
+<!--        app:layout_constraintGuide_percent="0.9"/>-->
+
+    <TextView
+        android:id="@+id/getOtpLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="38dp"
+        android:layout_marginTop="50dp"
+        android:fontFamily="@font/bubblegum_sans"
+        android:text="Click button to get OTP"
+        android:textColor="#8BC34A"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mstatus" />
+
+    <Button
+        android:id="@+id/getOtp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="80dp"
+        android:background="@drawable/button"
+        android:fontFamily="@font/bubblegum_sans"
+        android:onClick="getOtp"
+        android:text="Get OTP"
+        android:textColor="#FBF6F6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/getOtpLabel" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="fill_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="35dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/getOtp"
+        app:srcCompat="@drawable/image_8" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

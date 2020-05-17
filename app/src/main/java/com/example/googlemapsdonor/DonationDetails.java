@@ -66,6 +66,7 @@ public class DonationDetails extends AppCompatActivity {
         final TextView persons = (TextView) findViewById(R.id.noOfPersonsField);
         final TextView donorname = (TextView) findViewById(R.id.donorNameField);
         final TextView donorCon = (TextView) findViewById(R.id.donorContactField);
+        final TextView pickupTime = (TextView)findViewById(R.id.timeField);
         final  DonationModel donation = (DonationListModel) getIntent().getSerializableExtra("DonationModel");
         Log.i("DONATION KEY","DONATION KEY"+donation.getKey());
         if(donation!=null&& donation.getFoodKey()!=null&&donation.getDonorKey()!=null){
@@ -100,6 +101,9 @@ public class DonationDetails extends AppCompatActivity {
                                             persons.setText(Integer.toString(noOfPersons));
 
                                             donorname.setText(donorName);
+                                            pickupTime.setText(pickUpLocation.getTime());
+                                            longitude = Double.parseDouble(pickUpLocation.getLatitude().toString());
+                                            latitude = Double.parseDouble(pickUpLocation.getLongitute().toString());
                                             Log.d("fooditem",foodItem);
                                         }
 
@@ -150,32 +154,10 @@ public class DonationDetails extends AppCompatActivity {
                         }
                     });
                 }
+
             }
         });
 
-//        btnAccept.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                String message = "This is notification";
-//                NotificationCompat.Builder builder =
-//                        new NotificationCompat.Builder(DonationDetails.this,CHANNEL_ID)
-//                                . setSmallIcon(R.drawable.ic_message_black)
-//                        .setContentTitle("New Notification")
-//                        .setContentText(message)
-//                        .setAutoCancel(true);
-//                Intent intent = new Intent(getApplicationContext(),NgoActivity.class);
-//                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//                intent.putExtra("message",message);
-//                PendingIntent pendingIntent = PendingIntent.getActivity(DonationDetails.this,0,intent,PendingIntent.FLAG_UPDATE_CURRENT);
-//                builder.setContentIntent(pendingIntent);
-//
-//                NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(DonationDetails.this);
-//              //  NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-//                notificationManagerCompat.notify(0,builder.build());
-//            }
-//        });
-//
-//        notificationManager = NotificationManagerCompat.from(this);
 
 
     }
@@ -197,6 +179,7 @@ public class DonationDetails extends AppCompatActivity {
     }
     public void onGoToMaps(View view){
         Intent intent = new Intent(getApplicationContext(),PickupLocationActivity.class);
+        Log.i("lat",""+latitude+ longitude);
         intent.putExtra("latitude", latitude);
         intent.putExtra("longitude",longitude);
         startActivity(intent);

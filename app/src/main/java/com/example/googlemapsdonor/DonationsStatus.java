@@ -28,6 +28,7 @@ public class DonationsStatus extends AppCompatActivity {
     private NotificationManagerCompat notificationManager;
     private TextView mstatus;
     private String donationStatus= "";
+    int OTP;
 
 
     @Override
@@ -60,8 +61,9 @@ public class DonationsStatus extends AppCompatActivity {
                 mstatus.setText(donationStatus);
                 Log.d("DonationStatusCOntrole", "Data Snapshot is " + status);
                 Log.d("DonationStatusCOntrole", "Data Snapshot is " + otp);
+                OTP = otp;
                 if(donationStatus!=null&&donationStatus.equals(Constants.ACCEPTED)){
-                    sendNotification(otp);
+                    sendNotification();
                 }
             }
 
@@ -72,9 +74,23 @@ public class DonationsStatus extends AppCompatActivity {
         });
     }
 
-    public void sendNotification(int otp) {
+    public void sendNotification() {
+        String title = "Your Donation is accepted";
+        String message = "Successfully Aceepted Donation";
+        Log.i("onsend","onsend");
+
+        Notification notification = new NotificationCompat.Builder(this, CHANNEL_1_ID)
+                .setSmallIcon(R.drawable.ic_message_black)
+                .setContentTitle(title)
+                .setContentText(message)
+                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+                .build();
+        notificationManager.notify(1, notification);
+    }
+    public void getOtp(View v) {
         String title = "Give this OTP to NGO";
-        String message = "Your OTP is "+ otp;
+        String message = "Your OTP is "+ OTP;
         Log.i("onsend","onsend");
 
         Notification notification = new NotificationCompat.Builder(this, CHANNEL_1_ID)
