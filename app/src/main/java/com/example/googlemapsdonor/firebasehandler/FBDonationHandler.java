@@ -250,7 +250,8 @@ public class FBDonationHandler {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                Log.d("get donation once","ngo key set is "+databaseError.getMessage());
+                dataStatus.errorOccured(databaseError.getMessage());
             }
         });
 

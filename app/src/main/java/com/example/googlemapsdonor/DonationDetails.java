@@ -134,6 +134,7 @@ public class DonationDetails extends AppCompatActivity {
         btnAccept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
+                Log.d("get donation once","current user is "+Constants.currentUser);
                 if(Constants.currentUser!=null) {
                     fbDonationHandler.addNgo(Constants.currentUser,donationKey, new DataStatus() {
                         @Override
@@ -145,17 +146,19 @@ public class DonationDetails extends AppCompatActivity {
                             Log.d("DonationDetails","Donor otp"+donation.getOtp());
                             intent.putExtra("otp",donation.getOtp());
                             intent.putExtra("donationKey",donation.getKey());
-                            intent.putExtra("donationModel",donation);
+                            intent.putExtra("DonationModel",donation);
                             startActivity(intent);
                         }
 
                         @Override
                         public void errorOccured(String message) {
-
+                            Toast.makeText(DonationDetails.this,message,Toast.LENGTH_SHORT).show();
                         }
                     });
                 }
-
+                else{
+                    Toast.makeText(DonationDetails.this,"Please Login First!",Toast.LENGTH_SHORT).show();
+                }
             }
         });
 

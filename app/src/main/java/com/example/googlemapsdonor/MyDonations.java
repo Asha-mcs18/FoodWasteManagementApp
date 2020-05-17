@@ -80,9 +80,7 @@ public class MyDonations extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getApplicationContext(),Ngo_Otp.class);
-//                Log.d("CLICKED",donationList.toString());
                 String donationKey = donations.get(position);
-//                Log.i("Carry",""+position);
                 intent.putExtra("DonationModel",mdonationList.get(position));
                 startActivity(intent);
                 setResult(Activity.RESULT_OK,intent);

@@ -23,7 +23,7 @@ import com.example.googlemapsdonor.models.UserModel;
 import com.example.googlemapsdonor.utils.Constants;
 
 public class Ngo_Otp extends AppCompatActivity {
-  EditText otp ;
+    EditText otp ;
     int mOTP;
     int donorOTP;
     String donationKey = "";
@@ -47,7 +47,6 @@ public class Ngo_Otp extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ngo__otp);
         otp = (EditText) findViewById(R.id.otpField);
-        donorOTP =  getIntent().getIntExtra("otp",0);
         donationKey = getIntent().getStringExtra("donationKey");
 
         final TextView fooditem = (TextView) findViewById(R.id.foodItemField);
@@ -56,11 +55,13 @@ public class Ngo_Otp extends AppCompatActivity {
         final TextView donorname = (TextView) findViewById(R.id.donorNameField);
         final TextView donorCon = (TextView) findViewById(R.id.donorContactField);
         final TextView pickupTime = (TextView)findViewById(R.id.timeField);
+        final DonationListModel donation = (DonationListModel) getIntent().getSerializableExtra("DonationModel");
 
-        final DonationModel donation = (DonationListModel) getIntent().getSerializableExtra("DonationModel");
+
         Log.i("DONATION KEY","DONATION KEY"+donationKey);
-
-
+        if(donation!=null) {
+            donorOTP = donation.getOtp();
+        }
         if(donation!=null&& donation.getFoodKey()!=null&&donation.getDonorKey()!=null){
             foodHandler.getFoodItem(donation.getFoodKey(), new DataStatus() {
                 @Override
@@ -89,13 +90,9 @@ public class Ngo_Otp extends AppCompatActivity {
                                     fooditem.setText(foodItem);
                                     donationKey=donation.getKey();
                                     shelf.setText(Integer.toString(shelfLife));
-
                                     persons.setText(Integer.toString(noOfPersons));
-
                                     donorname.setText(donorName);
                                     pickupTime.setText(pickUpLocation.getTime());
-//                                    longitude = Double.parseDouble(pickUpLocation.getLatitude().toString());
-//                                    latitude = Double.parseDouble(pickUpLocation.getLongitute().toString());
                                     Log.d("fooditem",foodItem);
                                 }
 
@@ -119,8 +116,8 @@ public class Ngo_Otp extends AppCompatActivity {
                 }
             });
         }
-
     }
+
     public void checkOtp(View v)
     {
         Log.d("otp",""+otp.getText().toString());
@@ -141,5 +138,12 @@ public class Ngo_Otp extends AppCompatActivity {
                 }
             });
         }
+        else{
+            Toast.makeText(Ngo_Otp.this,"Invalid OTP!",Toast.LENGTH_LONG).show();
+        }
+    }
+
+    public void initialize(){
+
     }
 }
