@@ -96,7 +96,7 @@ public class NgoActivity<fragment1> extends AppCompatActivity {
                 finish();
             }
         });
-
+        adapter.notifyDataSetChanged();
     }
 
     @Override

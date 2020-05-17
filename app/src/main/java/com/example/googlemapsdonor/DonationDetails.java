@@ -19,12 +19,15 @@ import android.widget.Toast;
 
 import com.example.googlemapsdonor.firebasehandler.FBDonationHandler;
 import com.example.googlemapsdonor.firebasehandler.FBFoodHandler;
+import com.example.googlemapsdonor.firebasehandler.FBLocationHandler;
 import com.example.googlemapsdonor.firebasehandler.FBUserHandler;
 import com.example.googlemapsdonor.models.DataStatus;
 import com.example.googlemapsdonor.models.DonationListModel;
 import com.example.googlemapsdonor.models.DonationModel;
 import com.example.googlemapsdonor.models.FoodModel;
+import com.example.googlemapsdonor.models.LocationModel;
 import com.example.googlemapsdonor.models.UserModel;
+import com.example.googlemapsdonor.utils.Constants;
 
 import static com.example.googlemapsdonor.utils.Notifications.CHANNEL_1_ID;
 import static com.example.googlemapsdonor.utils.Notifications.CHANNEL_2_ID;
@@ -39,7 +42,7 @@ public class DonationDetails extends AppCompatActivity {
     String donorName = " " ;
     String donorContact =" " ;
     Button btnAccept ;
-
+    String donationKey="";
     private static  final String CHANNEL_ID = "Donation accepted";
     private static  final String CHANNEL_NAME = "Donation Accepted";
     private static  final String CHANNEL_DESC= "Donation accepted notifocation";
@@ -48,6 +51,7 @@ public class DonationDetails extends AppCompatActivity {
     private FBDonationHandler fbDonationHandler = new FBDonationHandler();
     private FBFoodHandler foodHandler = new FBFoodHandler();
     private FBUserHandler fbUserHandler = new FBUserHandler();
+    private FBLocationHandler locationHandler = new FBLocationHandler();
 
     private FoodModel food;
     private UserModel donor;
@@ -77,20 +81,33 @@ public class DonationDetails extends AppCompatActivity {
                                     super.dataLoaded(donorObject);
                                     donor = (UserModel) donorObject;
                                     Log.d("Donation Details","inside donor"+food.getFoodItem()+"   "+donor.toString());
-                                    foodItem = food.getFoodItem();
-                                    shelfLife = food.getShelfLife();
-                                    noOfPersons = food.getNoOfPersons();
-                                    donorName = donor.getUserName();
-                                    donorContact = donor.getMobileNo();
-                                    donorCon.setText(donorContact);
-                                    fooditem.setText(foodItem);
+                                    locationHandler.readLocationForKey(donation.getPickUpLocationKey(),Constants.PICKUP_LOCATION, new DataStatus() {
+                                        @Override
+                                        public void dataLoaded(Object object) {
+                                            super.dataLoaded(object);
+                                            LocationModel pickUpLocation = (LocationModel) object;
+                                            Log.d("Donation Details","Location is "+pickUpLocation.toString());
+                                            foodItem = food.getFoodItem();
+                                            shelfLife = food.getShelfLife();
+                                            noOfPersons = food.getNoOfPersons();
+                                            donorName = donor.getUserName();
+                                            donorContact = donor.getMobileNo();
+                                            donorCon.setText(donorContact);
+                                            fooditem.setText(foodItem);
+                                            donationKey=donation.getKey();
+                                            shelf.setText(Integer.toString(shelfLife));
 
-                                    shelf.setText(Integer.toString(shelfLife));
+                                            persons.setText(Integer.toString(noOfPersons));
 
-                                    persons.setText(Integer.toString(noOfPersons));
+                                            donorname.setText(donorName);
+                                            Log.d("fooditem",foodItem);
+                                        }
 
-                                    donorname.setText(donorName);
-                                    Log.d("fooditem",foodItem);
+                                        @Override
+                                        public void errorOccured(String message) {
+
+                                        }
+                                    });
                                 }
 
                                 @Override
@@ -109,20 +126,30 @@ public class DonationDetails extends AppCompatActivity {
 
 
         Log.d("fooditem",foodItem);
-
-//        TextView donationTime = (TextView) findViewById(R.id.timeField);
-//////        donationTime.setText(time);
-
-
-
         btnAccept = findViewById(R.id.acceptBtn);
         btnAccept.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                sendNotification(v);
-                Intent intent = new Intent(getApplicationContext(),Ngo_Otp.class);
-                startActivity(intent);
+            public void onClick(final View v) {
+                if(Constants.currentUser!=null) {
+                    fbDonationHandler.addNgo(Constants.currentUser,donationKey, new DataStatus() {
+                        @Override
+                        public void dataUpdated(String message) {
+                            super.dataUpdated(message);
+                            Log.d("Donation details","status"+message);
+                            sendNotification(v);
+                            Intent intent = new Intent(getApplicationContext(), Ngo_Otp.class);
+                            Log.d("DonationDetails","Donor otp"+donation.getOtp());
+                            intent.putExtra("otp",donation.getOtp());
+                            intent.putExtra("donationKey",donation.getKey());
+                            startActivity(intent);
+                        }
 
+                        @Override
+                        public void errorOccured(String message) {
+
+                        }
+                    });
+                }
             }
         });
 

@@ -20,13 +20,24 @@ public class DonationModel implements Serializable {
     private String donorLocationKey;
     private String foodKey;
     private String status;
+    private int Otp;
+
+    public int getOtp() {
+        return Otp;
+    }
+
+    public void setOtp(int otp) {
+        Otp = otp;
+    }
+
     //private HashMap<String,Object> timestampCreated;
     private Object timestampCreated;
 
-    public DonationModel(String donorKey, String pickUpLocationKey, String foodKey) {
+    public DonationModel(String donorKey, String pickUpLocationKey, String foodKey,int otp) {
         this.donorKey = donorKey;
         this.pickUpLocationKey = pickUpLocationKey;
         this.foodKey = foodKey;
+        this.Otp = otp;
 //        HashMap<String,Object> timestamp = new HashMap<>();
 //        timestamp.put("timestamp", ServerValue.TIMESTAMP);
 //        this.timestampCreated  = timestamp;
@@ -107,19 +118,6 @@ public class DonationModel implements Serializable {
     public void setStatus(String status) {
         this.status = status;
     }
-//
-//    public HashMap<String, Object> getTimestampCreated() {
-//        return timestampCreated;
-//    }
-//
-//    public void setTimestampCreated(HashMap<String, Object> timestampCreated) {
-//        this.timestampCreated = timestampCreated;
-//    }
-//
-//    @Exclude
-//    public long getTimeStampCreatedLong(){
-//        return (long) timestampCreated.get("timestamp");
-//    }
 
     @Override
     public String toString() {
@@ -132,6 +130,8 @@ public class DonationModel implements Serializable {
                 ", donorLocationKey='" + donorLocationKey + '\'' +
                 ", foodKey='" + foodKey + '\'' +
                 ", status='" + status + '\'' +
+                ", Otp=" + Otp +
+                ", timestampCreated=" + timestampCreated +
                 '}';
     }
 }

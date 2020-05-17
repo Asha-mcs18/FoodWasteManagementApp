@@ -11,6 +11,7 @@ import com.example.googlemapsdonor.models.DonationModel;
 import com.example.googlemapsdonor.models.FoodModel;
 import com.example.googlemapsdonor.models.LocationModel;
 import com.example.googlemapsdonor.utils.Constants;
+import com.example.googlemapsdonor.utils.RandomNumber;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -52,7 +53,7 @@ public class DonationController {
                             Log.d("Donation Controller 3","Donor key,Food Ky, location key "+mdonorKey+" "+ mfoodKey +" " + mlocationKey);
                             //Log.d("Donation Controller ","Donor key,Food Ky, location key "+mdonorKey+" "+ mfoodKey +" " + mlocationKey);
                             if(mdonorKey!=null&&mlocationKey!=null&&mfoodKey!=null){
-                                DonationModel donationModel = new DonationModel(mdonorKey,mlocationKey,mfoodKey);
+                                DonationModel donationModel = new DonationModel(mdonorKey,mlocationKey,mfoodKey, RandomNumber.getRandomNumber());
                                 donationHandler.newDonation(donationModel,new DataStatus(){
                                     @Override
                                     public void dataCreated(Object  object) {

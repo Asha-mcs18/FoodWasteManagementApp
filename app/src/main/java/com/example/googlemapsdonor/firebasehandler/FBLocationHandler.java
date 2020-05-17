@@ -58,7 +58,7 @@ public class FBLocationHandler {
     }
 
     //done
-    public void readLocationForKey(String key, String typeOfLocation){
+    public void readLocationForKey(String key, String typeOfLocation, final DataStatus dataStatus){
         fullPathRef =null;
         fullPathRef= locRef.child(typeOfLocation).child(key);
         //Log.d("read Location","Location read for key"+key);
@@ -68,6 +68,7 @@ public class FBLocationHandler {
                 String key = dataSnapshot.getKey();
                 LocationModel loc = dataSnapshot.getValue(LocationModel.class);
                 Log.d("Location for a type","location key is "+ key);
+                dataStatus.dataLoaded(loc);
             }
 
             @Override

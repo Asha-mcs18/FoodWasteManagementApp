@@ -58,4 +58,15 @@ public class LocationModel {
     public void setStatus(boolean status) {
         this.trackingStatus = status;
     }
+
+    @Override
+    public String toString() {
+        return "LocationModel{" +
+                "longitude=" + longitude +
+                ", latitude=" + latitude +
+                ", time='" + time + '\'' +
+                ", locationKey='" + locationKey + '\'' +
+                ", trackingStatus=" + trackingStatus +
+                '}';
+    }
 }

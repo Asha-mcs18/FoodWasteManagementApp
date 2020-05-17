@@ -67,8 +67,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-
         if(currentUser!=null&&currentUser.getUid()!=null){
+            Constants.currentUser = currentUser.getUid();
             Log.d("Donor role", "role is " +currentUser.getUid());
                 fbUserHandler.readUserRoleByKey(currentUser.getUid(), new DataStatus() {
                     @Override
@@ -92,7 +92,6 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this,"Somme Error",Toast.LENGTH_LONG).show();
                     }
                 });
-
         }
     }
 }

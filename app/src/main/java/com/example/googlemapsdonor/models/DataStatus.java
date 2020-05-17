@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 public abstract class  DataStatus {
+    public void dataLoaded(String status,final int otp){}
     public  void dataLoaded(Object object){}
     public  void dataLoaded(List<?> donations){}
     public  void dataLoaded(String object){}

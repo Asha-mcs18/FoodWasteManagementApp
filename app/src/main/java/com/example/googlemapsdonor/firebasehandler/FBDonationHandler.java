@@ -45,11 +45,6 @@ public class FBDonationHandler {
         startDate.set(Calendar.MINUTE,0);
         startDate.set(Calendar.SECOND,0);
         startDate.set(Calendar.MILLISECOND,0);
-        //for end date
-//        endDate.set(Calendar.HOUR_OF_DAY,11);
-//        endDate.set(Calendar.MINUTE,59);
-//        endDate.set(Calendar.SECOND,59);
-//        endDate.set(Calendar.MILLISECOND,999);
     }
 
     //done
@@ -65,12 +60,15 @@ public class FBDonationHandler {
                 size=dataSnapshot.getChildrenCount();
                 Log.d("Donation Handler","size is "+size);
                 for(DataSnapshot ds : dataSnapshot.getChildren()){
-                    if(ds!=null){
+                    if(ds!=null) {
                         String key = ds.getKey();
-                        final DonationListModel donationModel= ds.getValue(DonationListModel.class);
+                        final DonationListModel donationModel = ds.getValue(DonationListModel.class);
                         keys.add(key);
                         //donations.add(donationModel);
-                            String foodKey = donationModel.getFoodKey();
+                        String foodKey = donationModel.getFoodKey();
+                        i++;
+                        if (donationModel != null
+                                && Long.parseLong(donationModel.getTimestampCreated().toString()) >= startDate.getTimeInMillis()) {
                             firebaseDatabase.getReference("Food").child(foodKey).addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -78,12 +76,12 @@ public class FBDonationHandler {
                                     donationModel.setFoodItem(food.getFoodItem());
                                     donationModel.setNoOfPersons(food.getNoOfPersons());
                                     donations.add(donationModel);
-                                    Log.d("Donation handler","final donation  objet is "+donationModel.toString());
-                                    if(++i==size){
+                                    Log.d("Donation handler", "final donation  objet is " + donationModel.toString());
+                                    if (i == size) {
                                         dataStatus.dataLoaded(donations);
                                         Log.d("read donations", "Outside donation handler for " + donations.size());
                                     }
-                                    Log.d("read donations", "Value of i and size " + i+" "+size);
+                                    Log.d("read donations", "Value of i and size " + i + " " + size);
                                 }
 
                                 @Override
@@ -91,15 +89,9 @@ public class FBDonationHandler {
 
                                 }
                             });
-
-//                            Log.d("read donations", "donation key" + donationModel.getKey());
-//                            Log.d("read donations", "donation status" + donationModel.getStatus());
                         }
-
+                    }
                 }
-//                for (DonationModel dm:donations) {
-//                    Log.d("For each loop",dm.getDonorKey());
-//                }
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -188,7 +180,7 @@ public class FBDonationHandler {
     }
 
     //done
-    public void addNgo(final String ngoKey, final String donationKey){
+    public void addNgo(final String ngoKey, final String donationKey, final DataStatus dataStatus){
         donationRef.child(donationKey).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -198,6 +190,7 @@ public class FBDonationHandler {
                     donationModel.setStatus(Constants.ACCEPTED);
                     donationRef.child(donationKey).setValue(donationModel);
                     Log.d("get donation once","ngo key set is "+donationModel.getNgoKey());
+                    dataStatus.dataUpdated("You have accepted the donation!!");
                 }
 
             }
@@ -211,7 +204,7 @@ public class FBDonationHandler {
     }
 
     //done
-    public void changeStatusToComplete(final String donationKey){
+    public void changeStatusToComplete(final String donationKey, final DataStatus dataStatus ){
         donationRef.child(donationKey).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -221,12 +214,14 @@ public class FBDonationHandler {
                     donationModel.setStatus(Constants.SUCCESS);
                     donationRef.child(donationKey).setValue(donationModel);
                     Log.d("set complete ","donation done successfully!! "+donationModel.getKey());
+                    dataStatus.dataUpdated("donation done successfully!! ");
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 Log.e("set failed","error setting status"+donationKey);
+                dataStatus.errorOccured(databaseError.getMessage());
             }
         });
     }
@@ -275,8 +270,6 @@ public class FBDonationHandler {
 
     //done
     public void readDonationStatus(final String donorKey, final DataStatus dataStatus){
-//        endDate = startDate;
-//        endDate.add(Calendar.DAY_OF_MONTH,1);
         Log.d("Donation Hleper", "start date is " + startDate.getTimeInMillis());
         //Log.d("Donation Hleper", "end date is " + endDate.getTimeInMillis());
         donationRef.orderByChild(Constants.DONOR_KEY).equalTo(donorKey).addValueEventListener(new ValueEventListener() {
@@ -293,7 +286,7 @@ public class FBDonationHandler {
                 }
                 if(donationModel!=null){
                     Log.d("Donation Hleper", "Data Snapshot is " + donationModel.toString());
-                    dataStatus.dataLoaded(donationModel.getStatus());
+                    dataStatus.dataLoaded(donationModel.getStatus(),donationModel.getOtp());
                 }
                 else{
                     Log.d("Donation Hleper", "Data Snapshot is " + donationModel);
@@ -309,14 +302,3 @@ public class FBDonationHandler {
         });
     }
 }
-
-/*FBDonationHandler donationHandler = new FBDonationHandler();
-     donationHandler.readDonations();
-     DonationModel donationModel =new DonationModel("-M5DfB22QnARRzo3N9nd","-M59AD6NQYtMHccVso0J","-M53nnhSfqp6rw8Jwzvw");
-     //donationHandler.newDonation(donationModel);
-     //donationHandler.addNgo("-M5CmgL8PoC-01MzwTmR","-M5G2bZ75dpTECziT4x6");
-     //donationHandler.changeStatusToComplete("-M5G5dpW9hAQ5W_NLLtl");
-     //donationHandler.changeStatusToFail("-M5G8WDK8bgZFVUpmP_Z");
-     //done
-     //donationHandler.changeStatusToNA("-M5G7qqB--YDK91qB_Am");
-* */

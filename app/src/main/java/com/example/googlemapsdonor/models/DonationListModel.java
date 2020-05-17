@@ -10,8 +10,8 @@ public class DonationListModel extends DonationModel {
         super();
     }
 
-    public DonationListModel(String donorKey, String pickUpLocationKey, String foodKey, String foodItem,int noOfPersons) {
-        super(donorKey, pickUpLocationKey, foodKey);
+    public DonationListModel(String donorKey, String pickUpLocationKey, String foodKey, String foodItem,int noOfPersons,int otp) {
+        super(donorKey, pickUpLocationKey, foodKey,otp);
         this.foodItem = foodItem;
         this.noOfPersons = noOfPersons;
     }

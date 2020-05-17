@@ -36,10 +36,11 @@ public class DonationStatusController {
                     if(role.equals(Constants.DONOR)){
                         fbDonationHandler.readDonationStatus(currentDonor, new DataStatus() {
                             @Override
-                            public void dataLoaded(String status) {
+                            public void dataLoaded(String status, final int otp) {
                                 super.dataLoaded(status);
                                 Log.d("DonationStatusControler","donations status is "+status);
-                                appDataStatus.dataLoaded(status);
+                                Log.d("DonationStatusControler","donations otp is "+otp);
+                                appDataStatus.dataLoaded(status,otp);
                             }
 
                             @Override
