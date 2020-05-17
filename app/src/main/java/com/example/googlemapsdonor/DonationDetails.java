@@ -28,6 +28,8 @@ import com.example.googlemapsdonor.models.FoodModel;
 import com.example.googlemapsdonor.models.LocationModel;
 import com.example.googlemapsdonor.models.UserModel;
 import com.example.googlemapsdonor.utils.Constants;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import static com.example.googlemapsdonor.utils.Notifications.CHANNEL_1_ID;
 import static com.example.googlemapsdonor.utils.Notifications.CHANNEL_2_ID;
@@ -52,6 +54,7 @@ public class DonationDetails extends AppCompatActivity {
     private FBFoodHandler foodHandler = new FBFoodHandler();
     private FBUserHandler fbUserHandler = new FBUserHandler();
     private FBLocationHandler locationHandler = new FBLocationHandler();
+    FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
 
     private FoodModel food;
     private UserModel donor;
@@ -135,8 +138,10 @@ public class DonationDetails extends AppCompatActivity {
             @Override
             public void onClick(final View v) {
                 Log.d("get donation once","current user is "+Constants.currentUser);
-                if(Constants.currentUser!=null) {
-                    fbDonationHandler.addNgo(Constants.currentUser,donationKey, new DataStatus() {
+
+
+                if(currentUser.getUid()!= null) {
+                    fbDonationHandler.addNgo(currentUser.getUid(),donationKey, new DataStatus() {
                         @Override
                         public void dataUpdated(String message) {
                             super.dataUpdated(message);
