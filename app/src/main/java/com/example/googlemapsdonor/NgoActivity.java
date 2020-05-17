@@ -25,20 +25,13 @@ import java.util.List;
 public class NgoActivity<fragment1> extends AppCompatActivity {
     ArrayList <String> foodItemList = new ArrayList<>() ;
     HashMap<Integer ,String> donations=new HashMap<Integer,String>();
-//    HashMap<Integer ,String> locations=new HashMap<Integer,String>();
     private List<DonationListModel> mdonationList =null;
     private DonationListController donationListController = new DonationListController();
 
-//    @Override
+    @Override
     protected void onStart() {
         super.onStart();
         donationListController.getDonationList(new DataStatus() {
-//            @Override
-//            public void dataLoaded(List<Object> object) {
-//                super.dataLoaded(object);
-//                Log.d("Ngo Activity","Donation List Loaded successfully");
-//                //mdonationList = (List<DonationListModel>)(List<?>)object;
-//            }
             @Override
             public void dataLoaded(List<?> donations) {
                 super.dataLoaded(donations);
@@ -74,32 +67,24 @@ public class NgoActivity<fragment1> extends AppCompatActivity {
             String value = d.getFoodKey();
             String foodDetails =  "Food Item:  " +d.getFoodItem() + "    Persons: "+ d.getNoOfPersons();
             donations.put(k,value);
-//            locations.put(k,value);
-//            for (String s : donations){
-//                Log.d("My array list content: ", s);
-//            }
             foodItemList.add(foodDetails);
             k++;
         }
 
         final ListView donationList = (ListView) findViewById(R.id.donationsList);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,foodItemList);
-//        adapter.clear();
         donationList.setAdapter(adapter);
         donationList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getApplicationContext(),DonationDetails.class);
-//                Log.d("CLICKED",donationList.toString());
                 String donationKey = donations.get(position);
-//                Log.i("Carry",""+position);
                 intent.putExtra("DonationModel",mdonationList.get(position));
                 startActivity(intent);
                 setResult(Activity.RESULT_OK,intent);
                 finish();
             }
         });
-//        adapter.notifyDataSetChanged();
     }
 
     @Override

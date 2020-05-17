@@ -99,31 +99,3 @@ public class DonationListController {
 //        });
      }
 }
-//for(final DonationModel donation: donations) {
-//        Log.d("DonationListController","instanceof key is"+ (don instanceof DonationModel));
-//final DonationListModel d = (DonationListModel) donation;
-//        foodKey  =donation.getFoodKey();
-//        Log.d("DonationListController","food key is"+foodKey);
-//        foodHandler.getFoodItem(foodKey, new DataStatus() {
-//@Override
-//public void dataLoaded(Object object) {
-//        super.dataLoaded(object);
-//        Log.d("DonationListController", "Got food model for food");
-//        FoodModel foodModel = (FoodModel) object;
-//        Log.d("DonationListController", "the food read is " + foodModel.toString());
-//        DonationListModel donationListModel = new DonationListModel(donation.getDonorKey(),donation.getPickUpLocationKey(),donation.getFoodKey(),foodModel.getFoodItem(),foodModel.getNoOfPersons());
-//        //donation.setFoodItem(foodModel.getFoodItem());
-//        //donation.setNoOfPersons(foodModel.getNoOfPersons());
-//        Log.d("DonationListController", "food key is" + donationListModel.getFoodItem());
-//        Log.d("DonationListController", "food key is" + donationListModel.getNoOfPersons());
-//        donationsMap.put(donation.getKey(),donationListModel);
-//        Log.d("DonationListController", "donation List item added  is" +donationListModel.toString());
-//        }
-//
-//@Override
-//public void errorOccured(String message) {
-//        Log.d("DonationListController",message);
-//        appDataStatus.errorOccured(message);
-//        }
-//        });
-//        }

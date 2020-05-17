@@ -13,8 +13,10 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.googlemapsdonor.controllers.DonationListController;
+import com.example.googlemapsdonor.firebasehandler.FBDonationHandler;
 import com.example.googlemapsdonor.models.DataStatus;
 import com.example.googlemapsdonor.models.DonationListModel;
+import com.example.googlemapsdonor.utils.Constants;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -25,18 +27,12 @@ public class MyDonations extends AppCompatActivity {
     HashMap<Integer ,String> donations=new HashMap<Integer,String>();
     //    HashMap<Integer ,String> locations=new HashMap<Integer,String>();
     private List<DonationListModel> mdonationList =null;
-    private DonationListController donationListController = new DonationListController();
+    private FBDonationHandler fbDonationHandler = new FBDonationHandler();
 
     //    @Override
     protected void onStart() {
         super.onStart();
-        donationListController.getDonationList(new DataStatus() {
-            //            @Override
-//            public void dataLoaded(List<Object> object) {
-//                super.dataLoaded(object);
-//                Log.d("Ngo Activity","Donation List Loaded successfully");
-//                //mdonationList = (List<DonationListModel>)(List<?>)object;
-//            }
+        fbDonationHandler.readDonationsForNgo(Constants.currentUser,new DataStatus() {
             @Override
             public void dataLoaded(List<?> donations) {
                 super.dataLoaded(donations);
@@ -72,10 +68,6 @@ public class MyDonations extends AppCompatActivity {
             String value = d.getFoodKey();
             String foodDetails =  "Food Item:  " +d.getFoodItem() + "    Persons: "+ d.getNoOfPersons();
             donations.put(k,value);
-//            locations.put(k,value);
-//            for (String s : donations){
-//                Log.d("My array list content: ", s);
-//            }
             foodItemList.add(foodDetails);
             k++;
         }
@@ -111,8 +103,6 @@ public class MyDonations extends AppCompatActivity {
                 Log.d("Ngo Activity",donation.toString());
             }
         }
-
-
     }
 
 }

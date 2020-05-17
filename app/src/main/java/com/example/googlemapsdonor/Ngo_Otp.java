@@ -56,8 +56,9 @@ public class Ngo_Otp extends AppCompatActivity {
         final TextView donorname = (TextView) findViewById(R.id.donorNameField);
         final TextView donorCon = (TextView) findViewById(R.id.donorContactField);
         final TextView pickupTime = (TextView)findViewById(R.id.timeField);
+
         final DonationModel donation = (DonationListModel) getIntent().getSerializableExtra("DonationModel");
-        Log.i("DONATION KEY","DONATION KEY"+donation.getKey());
+        Log.i("DONATION KEY","DONATION KEY"+donationKey);
 
 
         if(donation!=null&& donation.getFoodKey()!=null&&donation.getDonorKey()!=null){

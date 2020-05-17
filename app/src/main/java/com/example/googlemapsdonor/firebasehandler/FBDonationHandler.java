@@ -35,7 +35,6 @@ public class FBDonationHandler {
     int flag=0;
     private long i=0, size=0;
 
-    //DonationModel donationModel;
     public FBDonationHandler(){
         firebaseDatabase = FirebaseDatabase.getInstance();
         donationRef = firebaseDatabase.getReference(Constants.DONATION);
@@ -68,6 +67,60 @@ public class FBDonationHandler {
                         String foodKey = donationModel.getFoodKey();
                         i++;
                         if (donationModel != null
+                                && Long.parseLong(donationModel.getTimestampCreated().toString()) >= startDate.getTimeInMillis()) {
+                            firebaseDatabase.getReference("Food").child(foodKey).addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                    FoodModel food = dataSnapshot.getValue(FoodModel.class);
+                                    donationModel.setFoodItem(food.getFoodItem());
+                                    donationModel.setNoOfPersons(food.getNoOfPersons());
+                                    donations.add(donationModel);
+                                    Log.d("Donation handler", "final donation  objet is " + donationModel.toString());
+                                    if (i == size) {
+                                        dataStatus.dataLoaded(donations);
+                                        Log.d("read donations", "Outside donation handler for " + donations.size());
+                                    }
+                                    Log.d("read donations", "Value of i and size " + i + " " + size);
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                }
+                            });
+                        }
+                    }
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.d("read donations", "Some problem occured fetching list");
+                dataStatus.errorOccured(databaseError.getMessage());
+            }
+        });
+    }
+
+
+    public void readDonationsForNgo(String ngoKey, final DataStatus dataStatus){
+        donationRef.orderByChild(Constants.DONATION_NGO).equalTo(ngoKey).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                i=0;
+                size=0;
+                donations.clear();
+                Log.d("read donations", "donation key" +dataSnapshot.toString());
+                List<String> keys = new ArrayList<>();
+                size=dataSnapshot.getChildrenCount();
+                Log.d("Donation Handler","size is "+size);
+                for(DataSnapshot ds : dataSnapshot.getChildren()){
+                    if(ds!=null) {
+                        String key = ds.getKey();
+                        final DonationListModel donationModel = ds.getValue(DonationListModel.class);
+                        keys.add(key);
+                        //donations.add(donationModel);
+                        String foodKey = donationModel.getFoodKey();
+                        i++;
+                        if (donationModel != null&&donationModel.getStatus().equals(Constants.ACCEPTED)
                                 && Long.parseLong(donationModel.getTimestampCreated().toString()) >= startDate.getTimeInMillis()) {
                             firebaseDatabase.getReference("Food").child(foodKey).addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override

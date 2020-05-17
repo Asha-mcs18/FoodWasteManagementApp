@@ -145,6 +145,7 @@ public class DonationDetails extends AppCompatActivity {
                             Log.d("DonationDetails","Donor otp"+donation.getOtp());
                             intent.putExtra("otp",donation.getOtp());
                             intent.putExtra("donationKey",donation.getKey());
+                            intent.putExtra("donationModel",donation);
                             startActivity(intent);
                         }
 
