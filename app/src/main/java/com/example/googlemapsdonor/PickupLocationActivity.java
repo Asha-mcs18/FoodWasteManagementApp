@@ -89,7 +89,7 @@ public class PickupLocationActivity extends FragmentActivity implements OnMapRea
 
     }
     public  void onReturn(View view){
-        Intent intent = new Intent(getApplicationContext(),DonationDetails.class);
+        Intent intent = new Intent(getApplicationContext(),NgoActivity.class);
         startActivity(intent);
          finish();
     }

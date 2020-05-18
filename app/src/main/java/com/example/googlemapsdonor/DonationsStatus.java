@@ -22,6 +22,8 @@ import com.example.googlemapsdonor.models.DataStatus;
 import com.example.googlemapsdonor.models.DonationModel;
 import com.example.googlemapsdonor.utils.Constants;
 
+import org.w3c.dom.Text;
+
 public class DonationsStatus extends AppCompatActivity {
 
     public static final int REQUEST_CODE_GETMESSAGE = 1014;
@@ -29,6 +31,8 @@ public class DonationsStatus extends AppCompatActivity {
     private TextView mstatus;
     private String donationStatus= "";
     int OTP;
+    String ngoName = "NGO name";
+    String ngoNum  = "0000000000";
 
 
     @Override
@@ -41,6 +45,11 @@ public class DonationsStatus extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_donations_status);
+
+        final TextView ngoname = (TextView) findViewById(R.id.ngoName);
+        final TextView ngonumber = (TextView) findViewById(R.id.ngoNum);
+
+
 //        sendNotification();
         Log.i("Donation Status","status");
         notificationManager = NotificationManagerCompat.from(this);
@@ -63,6 +72,8 @@ public class DonationsStatus extends AppCompatActivity {
                 Log.d("DonationStatusCOntrole", "Data Snapshot is " + otp);
                 OTP = otp;
                 if(donationStatus!=null&&donationStatus.equals(Constants.ACCEPTED)){
+                    ngoname.setText(ngoName);
+                    ngonumber.setText(ngoNum);
                     sendNotification();
                 }
             }
@@ -75,8 +86,8 @@ public class DonationsStatus extends AppCompatActivity {
     }
 
     public void sendNotification() {
-        String title = "Your Donation is accepted";
-        String message = "Successfully Aceepted Donation";
+        String title = "Successfully Aceepted Donation";
+        String message = "Your Donation is accepted.Pick up expected soon.";
         Log.i("onsend","onsend");
 
         Notification notification = new NotificationCompat.Builder(this, CHANNEL_1_ID)

@@ -64,6 +64,20 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+        Button btn =(Button) findViewById(R.id.ReturnAdd);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final String location [] = new String[2];
+                location [0] = Double.toString(address.getLatitude());
+                location [1] = Double.toString(address.getLongitude());
+                Intent intent = new Intent();
+                intent.putExtra("latitude",location[0]);
+                intent.putExtra("longitude",location[1]);
+                setResult(Activity.RESULT_OK,intent);
+                finish();
+            }
+        });
     }
 
 
@@ -71,6 +85,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @SuppressLint("MissingPermission")
     @Override
     public void onMapReady(GoogleMap googleMap) {
+
         mMap = googleMap;
 
         locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
@@ -143,24 +158,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         // Add a marker in Sydney and move the camera
 
     }
-    public void onReturn(View view){
-        final String location [] = new String[2];
-        location [0] = Double.toString(address.getLatitude());
-        location [1] = Double.toString(address.getLongitude());
+//    public void onReturn(View view){
+
 //         double location1 = address.getLatitude();
 //         double location2 = address.getLongitude();
 //      Log.i("location LAT",Double.toString(lat));
-        Button btn =(Button) findViewById(R.id.ReturnAdd);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.putExtra("latitude",location[0]);
-                intent.putExtra("longitude",location[1]);
-                setResult(Activity.RESULT_OK,intent);
-                finish();
-            }
-        });
-    }
+
+//    }
 
 }

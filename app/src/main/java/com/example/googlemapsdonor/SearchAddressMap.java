@@ -37,6 +37,20 @@ public class SearchAddressMap extends FragmentActivity implements OnMapReadyCall
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+        Button btn =(Button) findViewById(R.id.ReturnAdd);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final String location [] = new String[2];
+                location [0] = Double.toString(address.getLatitude());
+                location [1] = Double.toString(address.getLongitude());
+                Intent intent = new Intent();
+                intent.putExtra("latitude",Double.toString(address.getLatitude()));
+                intent.putExtra("longitude",Double.toString(address.getLongitude()));
+                setResult(Activity.RESULT_OK,intent);
+                finish();
+            }
+        });
     }
     public void onSearch(View view){
         EditText location_addr = (EditText) findViewById(R.id.address_field);
@@ -61,22 +75,10 @@ public class SearchAddressMap extends FragmentActivity implements OnMapReadyCall
             Log.i("Longitude",Double.toString(address.getLongitude()));
         }
     }
-    public void onReturn(View view){
-        final String location [] = new String[2];
-        location [0] = Double.toString(address.getLatitude());
-        location [1] = Double.toString(address.getLongitude());
-        Button btn =(Button) findViewById(R.id.ReturnAdd);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.putExtra("latitude",Double.toString(address.getLatitude()));
-                intent.putExtra("longitude",Double.toString(address.getLongitude()));
-                setResult(Activity.RESULT_OK,intent);
-                finish();
-            }
-        });
-    }
+//    public void onReturn(View view){
+
+
+//    }
 
 
 

@@ -27,6 +27,7 @@ public class DonorActivity extends AppCompatActivity {
     String longitude;
     TimePicker picker;
 
+
     int minutes=0;
     int hours=0;
     private DonationController donationController = new DonationController();
@@ -57,28 +58,44 @@ public class DonorActivity extends AppCompatActivity {
         }
 
     }
-    public void onSubmit(View view){
-        final EditText foodItem = (EditText) findViewById(R.id.FoodItemField);
-        final EditText shelfLife =  (EditText) findViewById(R.id.shelfLifeField);
-        final EditText noOfPersons = (EditText) findViewById(R.id.NoOfPersonsField);
-        picker=(TimePicker)findViewById(R.id.timePicker1);
-        hours = picker.getHour();
-        minutes = picker.getMinute();
+//    public void onSubmit(View view){
+
         //final String hours = Integer.toString(picker.getHour());
         //final String minutes = Integer.toString(picker.getMinute());
-        Log.i("ALL FOOD DETAILS","ENTERED BY DONOR");
-        Log.i("FOOD ITEM", foodItem.getText().toString());
-        Log.i("SHELF LIFE", shelfLife.getText().toString());
-        Log.i("NO OF PERSONS",noOfPersons.getText().toString());
-        Log.i("LATITUDE ", latitude);
-        Log.i("LONGITUDE ", longitude);
+//        Log.i("ALL FOOD DETAILS","ENTERED BY DONOR");
+//        Log.i("FOOD ITEM", foodItem.getText().toString());
+//        Log.i("SHELF LIFE", shelfLife.getText().toString());
+//        Log.i("NO OF PERSONS",noOfPersons.getText().toString());
+//        Log.i("LATITUDE ", latitude);
+//        Log.i("LONGITUDE ", longitude);
+
 
 //     startActivityForResult(intent , REQUEST_CODE_GETMESSAGE);
 
+
+//    }
+
+    private boolean validateInput(String mfoodItem, int mshelfLife, int mNoOfPersons, Double mlatitude, Double mlongitude, int hours, int minutes) {
+        if(mfoodItem!="" && mshelfLife>3&&mNoOfPersons>10&&mlatitude!=0&&mlongitude!=0&&hours>0&&hours<23&&minutes>0){
+            return true;
+        }
+        return false;
+    }
+
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_donor);
         Button btn =(Button) findViewById(R.id.submitRequest);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.i("Request submitted", "Submitted");
+                final EditText foodItem = (EditText) findViewById(R.id.FoodItemField);
+                final EditText shelfLife =  (EditText) findViewById(R.id.shelfLifeField);
+                final EditText noOfPersons = (EditText) findViewById(R.id.NoOfPersonsField);
+                picker=(TimePicker)findViewById(R.id.timePicker1);
+                hours = picker.getHour();
+                minutes = picker.getMinute();
                 final Intent intent = new Intent(getApplicationContext(),DonationsStatus.class);
                 //firebase connection code
                 String mfoodItem = foodItem.getText().toString();
@@ -114,18 +131,6 @@ public class DonorActivity extends AppCompatActivity {
                 }
             }
         });
-    }
-
-    private boolean validateInput(String mfoodItem, int mshelfLife, int mNoOfPersons, Double mlatitude, Double mlongitude, int hours, int minutes) {
-        if(mfoodItem!="" && mshelfLife>3&&mNoOfPersons>10&&mlatitude!=0&&mlongitude!=0&&hours>0&&hours<23&&minutes>0){
-            return true;
-        }
-        return false;
-    }
-
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_donor);
     }
 }
 

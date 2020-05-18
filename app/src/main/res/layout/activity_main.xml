@@ -196,6 +196,20 @@
         app:layout_constraintGuide_begin="20dp"
         app:layout_constraintGuide_percent="1.0"/>
 
+    <TextView
+        android:id="@+id/littlebit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="39dp"
+        android:fontFamily="@font/bubblegum_sans"
+        android:text="Little by little, a little becomes a Lot"
+        android:textColor="#F44336"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/contentStrip" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
